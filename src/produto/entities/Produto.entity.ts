@@ -1,5 +1,6 @@
 import { IsNotEmpty, isNotEmpty} from "class-validator";
 import { Plataforma } from "src/plataforma/entities/plataforma.entity";
+import { Usuario } from "src/usuario/entities/usuario.entity";
 import { Column, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name: "tb_produtos"})
@@ -32,4 +33,8 @@ export class Produtos{
     })
     plataforma: Plataforma
 
+    @ManyToOne(() => Usuario, (usuario) => usuario.produto,{
+        onDelete: "CASCADE"
+    })
+    usuario: Usuario
 }
